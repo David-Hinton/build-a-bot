@@ -2,31 +2,31 @@
       <div>
     <div class="top-row">
       <div class="top part">
-        <img v-bind:src="availableParts.heads[0].src" title="head"/>
-        <button class="prev-selector">&#9668;</button>
-        <button class="next-selector">&#9658;</button>
+        <img :src="availableParts.heads[selectedHeadIndex].src" title="head"/>
+        <button @click="selectPreviousHead()" class="prev-selector">&#9668;</button>
+        <button @click="selectNextHead()" class="next-selector">&#9658;</button>
       </div>
     </div>
     <div class="middle-row">
       <div class="left part">
-        <img v-bind:src="availableParts.arms[0].src" title="left arm"/>
+        <img :src="availableParts.arms[0].src" title="left arm"/>
         <button class="prev-selector">&#9650;</button>
         <button class="next-selector">&#9660;</button>
       </div>
       <div class="center part">
-        <img v-bind:src="availableParts.torsos[0].src" title="left arm"/>
+        <img :src="availableParts.torsos[0].src" title="left arm"/>
         <button class="prev-selector">&#9668;</button>
         <button class="next-selector">&#9658;</button>
       </div>
       <div class="right part">
-        <img v-bind:src="availableParts.arms[0].src" title="left arm"/>
+        <img :src="availableParts.arms[0].src" title="left arm"/>
         <button class="prev-selector">&#9650;</button>
         <button class="next-selector">&#9660;</button>
       </div>
     </div>
     <div class="bottom-row">
       <div class="bottom part">
-        <img v-bind:src="availableParts.bases[0].src" title="left arm"/>
+        <img :src="availableParts.bases[0].src" title="left arm"/>
         <button class="prev-selector">&#9668;</button>
         <button class="next-selector">&#9658;</button>
       </div>
@@ -38,12 +38,33 @@
 <script>
 import availableParts from '../data/parts';
 
+function getPreviousValidIndex(index, length) {
+  const deprecatedIndex = index - 1;
+  return deprecatedIndex < 0 ? length - 1 : deprecatedIndex;
+}
+
+function getNextValidIndex(index, length) {
+  const deprecatedIndex = index - 1;
+  return deprecatedIndex < 0 ? length - 1 : deprecatedIndex;
+}
+
 export default {
   name: 'RobotBuilder',
   data() {
     return {
       availableParts,
+      selectedHeadIndex: 0,
     };
+  },
+  methods: {
+    selectNextHead() {
+      const totalHeads = this.availableParts.heads.length;
+      this.selectedHeadIndex = getNextValidIndex(this.selectedHeadIndex, totalHeads);
+    },
+    selectPreviousHead() {
+      const totalHeads = this.availableParts.heads.length;
+      this.selectedHeadIndex = getPreviousValidIndex(this.selectedHeadIndex, totalHeads);
+    },
   },
 };
 
