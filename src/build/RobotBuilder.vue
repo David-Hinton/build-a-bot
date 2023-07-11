@@ -2,7 +2,7 @@
       <div>
     <div class="top-row">
       <div class="top part">
-        <img :src="availableParts.heads[selectedHeadIndex].src" title="head"/>
+        <img :src="selectedRobot.head.src" title="head"/>
         <button @click="selectPreviousHead()" class="prev-selector">&#9668;</button>
         <button @click="selectNextHead()" class="next-selector">&#9658;</button>
       </div>
@@ -44,8 +44,8 @@ function getPreviousValidIndex(index, length) {
 }
 
 function getNextValidIndex(index, length) {
-  const deprecatedIndex = index - 1;
-  return deprecatedIndex < 0 ? length - 1 : deprecatedIndex;
+  const deprecatedIndex = index + 1;
+  return deprecatedIndex > length - 1 ? 0 : deprecatedIndex;
 }
 
 export default {
@@ -55,6 +55,13 @@ export default {
       availableParts,
       selectedHeadIndex: 0,
     };
+  },
+  computed: {
+    selectedRobot() {
+      return {
+        head: this.availableParts.heads[this.selectedHeadIndex],
+      };
+    },
   },
   methods: {
     selectNextHead() {
