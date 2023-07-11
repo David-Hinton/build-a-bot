@@ -44,8 +44,8 @@ function getPreviousValidIndex(index, length) {
 }
 
 function getNextValidIndex(index, length) {
-  const deprecatedIndex = index + 1;
-  return deprecatedIndex > length - 1 ? 0 : deprecatedIndex;
+  const incrementedIndex = index + 1;
+  return incrementedIndex > length - 1 ? 0 : incrementedIndex;
 }
 
 export default {
