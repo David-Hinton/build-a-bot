@@ -84,20 +84,20 @@ export default {
       this.selectedHeadIndex = getPreviousValidIndex(this.selectedHeadIndex, totalHeads);
     },
     selectNextLeftArm() {
-      const totalArms = this.availableParts.arms.length;
-      this.selectedLeftArmIndex = getNextValidIndex(this.selectedLeftArmIndex, totalArms);
+      const totalLeftArms = this.availableParts.arms.length;
+      this.selectedLeftArmIndex = getNextValidIndex(this.selectedLeftArmIndex, totalLeftArms);
     },
     selectPreviousLeftArm() {
-      const totalArms = this.availableParts.arms.length;
-      this.selectedLeftArmIndex = getPreviousValidIndex(this.selectedLeftArmIndex, totalArms);
+      const totalLeftArms = this.availableParts.arms.length;
+      this.selectedLeftArmIndex = getPreviousValidIndex(this.selectedLeftArmIndex, totalLeftArms);
     },
     selectNextRightArm() {
-      const totalArms = this.availableParts.arms.length;
-      this.selectedRightArmIndex = getNextValidIndex(this.selectedRightArmIndex, totalArms);
+      const totalRightArms = this.availableParts.arms.length;
+      this.selectedRightArmIndex = getNextValidIndex(this.selectedRightArmIndex, totalRightArms);
     },
     selectPreviousRightArm() {
-      const totalArms = this.availableParts.arms.length;
-      this.selectedRightArmIndex = getPreviousValidIndex(this.selectedRightArmIndex, totalArms);
+      const totalRArms = this.availableParts.arms.length;
+      this.selectedRightArmIndex = getPreviousValidIndex(this.selectedRightArmIndex, totalRArms);
     },
     selectNextTorso() {
       const totalTorso = this.availableParts.torsos.length;
